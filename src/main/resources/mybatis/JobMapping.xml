@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis">
+
+    <resultMap id="JobInfo" type="wyue.entity.JobInfo"></resultMap>
+    <parameterMap id="JobInfo" type="wyue.entity.JobInfo"></parameterMap>
+
+    <insert id="addJobInfo" parameterMap="JobInfo">
+        insert into t_job(weburl,title,company,labels,salary,address,create_time,
+          experience,nature,education,hiring_num,postion,description,detailed_address)
+        values (#{weburl},#{title},#{company},#{labels},#{salary},#{address},#{create_time},
+          #{experience},#{nature},#{education},#{hiring_num},#{postion},#{description},#{detailed_address})
+    </insert>
+
+    <select id="getJobInfos" parameterMap="JobInfo" resultMap="JobInfo">
+        SELECT * FROM t_job t
+        <where>
+            <if test="company!=null and company!=''">
+                t.company LIKE '%${company}%'
+            </if>
+            <if test="title!=null and title!=''">
+                and t.title LIKE '%${title}%'
+            </if>
+        </where>
+    </select>
+</mapper>

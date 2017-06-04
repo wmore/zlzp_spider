@@ -1,0 +1,31 @@
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`zlzp_data` /*!40100 DEFAULT CHARACTER SET utf8 */;
+use zlzp_data;
+
+CREATE TABLE `t_job` (
+  `job_id` int(11) NOT NULL AUTO_INCREMENT,
+  `weburl` varchar(500) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `company` varchar(500) NOT NULL COMMENT '公司名',
+  `labels` varchar(200) DEFAULT NULL COMMENT '标签',
+  `salary` varchar(200) NOT NULL COMMENT '月薪',
+  `address` varchar(200) DEFAULT NULL,
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `experience` varchar(100) DEFAULT NULL COMMENT '工作经验',
+  `nature` varchar(100) DEFAULT NULL COMMENT '工作性质',
+  `education` varchar(100) DEFAULT NULL COMMENT '学历',
+  `hiring_num` int(11) DEFAULT NULL COMMENT '招聘人数',
+  `postion` varchar(100) DEFAULT NULL COMMENT '职位类别',
+  `description` text COMMENT '职位描述',
+  `detailed_address` varchar(500) DEFAULT NULL COMMENT '详细地址',
+  PRIMARY KEY (`job_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `t_book` (
+  `book_id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) NOT NULL,
+  `content` mediumtext NOT NULL,
+  `article` varchar(100) NOT NULL DEFAULT '',
+  `keywords` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`book_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=533 DEFAULT CHARSET=utf8;
